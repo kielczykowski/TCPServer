@@ -5,3 +5,5 @@ bin/
 
 
 *.class
+
+output.txt

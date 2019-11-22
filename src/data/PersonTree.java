@@ -25,6 +25,10 @@ public class PersonTree{
 		}
 		System.out.println(this.data);
 	}
+	
+	public TreeSet<Person> getData(){
+		return this.data;
+	}
 public static void main(String args []) {
 	PersonTree pt = new PersonTree("/home/michal/Programming/TCPServer/src/data/data");
 }

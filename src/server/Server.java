@@ -5,14 +5,14 @@ import java.net.*;
 import java.io.*;
 
 public class Server {
-	PersonTree data;
+	PersonTree tree;
 	ServerSocket server;
 	PrintWriter output;
 	BufferedReader input;
 	
 	public Server(String path) throws Exception{
 		System.out.println("Starting server");
-		this.data = new PersonTree(path);
+		this.tree = new PersonTree(path);
 		this.server = new ServerSocket(8080);
 		System.out.println("Waiting for connection");
 		Socket cs = this.server.accept();
@@ -20,18 +20,34 @@ public class Server {
 		this.output = new PrintWriter(cs.getOutputStream(),true);
 		this.input = new BufferedReader(new InputStreamReader(cs.getInputStream()));
 	}
+	
+	public String checkResources(String key) {
+		System.out.println(this.tree.getData());
+		if (key.length() != 9) {
+			return "User with this id wasnt found";
+		}
+		for(Person person: this.tree.getData()) {
+			System.out.println(person.getId().length());
+			if(person.getId().contentEquals(key)) {
+				return person.toString();
+			}
+		}
+		return "User with this id wasnt found";
+	}
+	
+	
 	public void run() throws Exception{
 		String inl, outl;
 		outl = "Napisz cos ['q' konczy wymianę]";
 		while((inl = this.input.readLine()) != null) {
 			if(inl.contentEquals("q")) break;
 			System.out.println(inl);
-			this.output.println(outl);
+			this.output.println(this.checkResources(inl));
 		}
 		System.out.println("out");
 		this.finalize();
 	}
-	
+
 	@Override
 	public void finalize(){
 		try {

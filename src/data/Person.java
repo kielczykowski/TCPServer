@@ -10,10 +10,13 @@ public class Person implements Comparable {
 		this.name = name;
 		this.surname = surname;
 	}
+	public String getId() {
+		return this.id;
+	}
 	
 	@Override
 	public String toString() {
-		return "I am: " + this.name + " " + this.surname + ", age: " + this.age + ", id: " + this.id;
+		return "name:" + this.name + ":surname:" + this.surname + ":age:" + this.age + ":id:" + this.id + ":";
 	}
 	@Override
 	public int compareTo(Object obj) {
