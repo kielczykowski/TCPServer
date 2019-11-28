@@ -27,7 +27,7 @@ public class Server {
 			return "User with this id wasnt found";
 		}
 		for(Person person: this.tree.getData()) {
-			System.out.println(person.getId().length());
+//			System.out.println(person.getId().length());
 			if(person.getId().contentEquals(key)) {
 				return person.toString();
 			}

@@ -19,6 +19,10 @@ public class Client {
 		this.stdInput = new BufferedReader(new InputStreamReader(System.in));
 	}
 	
+	public void sendMessage(String message) {
+		this.output.println(message);
+	}
+	
 	public void run() throws Exception{
 		String line, incoming;
 		String [] splitted = new String[8];
