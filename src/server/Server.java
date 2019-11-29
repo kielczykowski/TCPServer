@@ -36,16 +36,21 @@ public class Server {
 	}
 	
 	
-	public void run() throws Exception{
-		String inl, outl;
-		outl = "Napisz cos ['q' konczy wymianę]";
-		while((inl = this.input.readLine()) != null) {
-			if(inl.contentEquals("q")) break;
-			System.out.println(inl);
-			this.output.println(this.checkResources(inl));
+	public void run(){
+		String inl;
+		System.out.println("XDHI");
+		try{
+		if(this != null) {			
+			if((inl = this.input.readLine()) != null) {
+				if(inl.contentEquals("q")) return;
+				System.out.println(inl);
+				this.output.println(this.checkResources(inl));
+			}
 		}
-		System.out.println("out");
-		this.finalize();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
 	}
 
 	@Override
